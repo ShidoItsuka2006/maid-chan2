@@ -1,0 +1,90 @@
+import com.twilio.Twilio;
+
+import com.twilio.rest.api.v2010.account.Message;
+
+import com.twilio.type.PhoneNumber;
+
+import spark.Request;
+
+import spark.Response;
+
+import static spark.Spark.post;
+
+public class AutoReplyBot {
+
+    public static final String ACCOUNT_SID = "your_account_sid";
+
+    public static final String AUTH_TOKEN = "your_auth_token";
+
+    public static final String TWILIO_NUMBER = "your_twilio_phone_number";
+
+}
+
+public class AutoReplyBot {
+
+    public static final String ACCOUNT_SID = "your_account_sid";
+
+    public static final String AUTH_TOKEN = "your_auth_token";
+
+    public static final String TWILIO_NUMBER = "your_twilio_phone_number";
+
+}
+
+public static void sendWhatsAppMessage(String toNumber, String messageBody) {
+
+    Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+    Message message = Message.creator(
+
+            new PhoneNumber("whatsapp:" + toNumber),
+
+            new PhoneNumber("whatsapp:" + TWILIO_NUMBER),
+
+            messageBody)
+
+            .create();
+
+}
+
+public class AutoReplyBot {
+
+    public static final String ACCOUNT_SID = "your_account_sid";
+
+    public static final String AUTH_TOKEN = "your_auth_token";
+
+    public static final String TWILIO_NUMBER = "your_twilio_phone_number";
+
+}
+
+public static void sendWhatsAppMessage(String toNumber, String messageBody) {
+
+    Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+    Message message = Message.creator(
+
+            new PhoneNumber("whatsapp:" + toNumber),
+
+            new PhoneNumber("whatsapp:" + TWILIO_NUMBER),
+
+            messageBody)
+
+            .create();
+
+}
+
+public static void main(String[] args) {
+
+    post("/incoming", (req, res) -> {
+
+        String fromNumber = req.queryParams("From").substring(13); // remove "whatsapp:" prefix
+
+        String messageBody = "Thank you for your message. I am currently offline and will get back to you as soon as possible.";
+
+        sendWhatsAppMessage(fromNumber, messageBody);
+
+        return "";
+
+    });
+
+}
+
